@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yummy</title>
+    <link rel="shortcut icon" href="./images/tongue.png" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./css/all.min.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- Style css -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <!--+ ===========> Start SideBar <=========== -->
+    <div class="sidebar position-fixed top-0 bottom-0 px-5 z-3">
+        <div class="sidebarController position-absolute end-0 h-100 bg-white d-flex align-items-center justify-content-between flex-column py-5">
+            <p class="fs-3">😋</p>
+            <i class="fa-solid fa-close fa-3x menu"></i>
+            <div class="icons gap-3 d-flex flex-column">
+                <i class="fa-solid fa-basketball"></i>
+                <i class="fa-solid fa-share-alt"></i>
+            </div>
+        </div>
+
+        <div class="links d-flex flex-column h-100 justify-content-between align-items-center py-5">
+            <div class="header w-100">
+                <ul class="list-unstyled d-flex flex-column gap-4">
+                    <li class="text-uppercase fw-bold">
+                        <p href="" class="text-white text-decoration-none searchBtn" >
+                            Search
+                        </p>
+                    </li>
+                    <li class="text-uppercase fw-bold">
+                        <p href="" class="text-white text-decoration-none categories">
+                            Categories
+                        </p>
+                    </li>
+                    <li class="text-uppercase fw-bold">
+                        <p href="" class="text-white text-decoration-none area">
+                            Area
+                        </p>
+                    </li>
+                    <li class="text-uppercase fw-bold">
+                        <p href="" class="text-white text-decoration-none ingredients">
+                            Ingredients
+                        </p>
+                    </li>
+                    <li class="text-uppercase fw-bold">
+                        <p href="" class="text-white text-decoration-none contactus">
+                            ContactUs
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="social-media">
+                <div class="icons">
+                    <ul class="d-flex list-unstyled text-white gap-2">
+                        <li>
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-twitter"></i>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-basketball"></i>
+                        </li>
+                    </ul>
+                </div>
+                <p class="text-white">
+                    Copyright Â© 2019 All Rights
+                    Reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--+ ===========> End SideBar <=========== -->
+
+    <div class="searchContainer container d-none" id="searchContainer">
+        <div class="row">
+            <div class="col-6">
+                <div class="box px-3 py-5">
+                    <input type="text" placeholder="Enter The Category" class="cat w-100 form-control rounded-5 bg-transparent text-white px-4">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="box px-3 py-5">
+                    <input type="text" placeholder="Enter The Letter" class="letter w-100 form-control rounded-5 bg-transparent text-white px-4">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container px-5 py-5">
+        <div class="row rowDiv gy-4">
+
+        </div>
+    </div>
+
+    <script src="./js/anime.min.js"></script>
+    <script src="./js/jquery-3.6.4.min.js"></script>
+    <script src="./js/main.js" type="module"></script>
+</body>
+
+</html>
