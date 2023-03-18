@@ -12,13 +12,18 @@ import { IngredientsApi } from "./ingredients.js";
 let rowDiv = document.querySelector('.rowDiv');
 let firstInput = document.querySelector('.cat');
 let secondInput = document.querySelector('.letter');
-let firstInputInRow = document.querySelector('.rowDiv div:nth-child(1) input');
-let secondInputInRow = document.querySelector('.rowDiv div:nth-child(2) input');
-let thirdInputInRow = document.querySelector('.rowDiv div:nth-child(3) input');
-let fourthInputInRow = document.querySelector('.rowDiv div:nth-child(4) input');
-let fifthInputInRow = document.querySelector('.rowDiv div:nth-child(5) input');
-let sixInputInRow = document.querySelector('.rowDiv div:nth-child(6) input');
-let submitBtn = document.querySelector('.submitBtn');
+let firstInputInRow;
+let secondInputInRow;
+let thirdInputInRow;
+let fourthInputInRow;
+let fifthInputInRow;
+let sixInputInRow;
+let submitBtn;
+
+$(document).ready(() => {
+    $(".loading-screen").fadeOut(1000)
+    $("body").css("overflow", "visible")
+})
 
 let categoryArr = [
     "beef",
@@ -87,6 +92,7 @@ function display(arr) {
             displayDetails(recipe ? recipe : '');
         })
     }
+
 }
 
 function displayCategories(arr) {
@@ -189,14 +195,18 @@ function displayDetails(meal) {
 }
 
 async function getHomeApiForDisplaying() {
+    $(".loading-screen").fadeIn(1000)
     let apiRes = await new HomeApi().getHomeApi();
+    $(".loading-screen").fadeOut(1000)
     display(apiRes);
 }
 
 getHomeApiForDisplaying();
 
 async function getCategory(value) {
+    $(".loading-screen").fadeIn(1000)
     let apiRes = await new CategorySearch(value).getCategoryApi();
+    $(".loading-screen").fadeOut(1000)
     display(apiRes)
 }
 
@@ -207,8 +217,10 @@ firstInput.addEventListener('keyup', function () {
 });
 
 async function getLetter(value) {
+    $(".loading-screen").fadeIn(1000)
     let apiRes = await new LetterApi(value).getLetterApi();
     display(apiRes)
+    $(".loading-screen").fadeOut(1000)
 }
 
 secondInput.addEventListener('keyup', function () {
@@ -216,13 +228,18 @@ secondInput.addEventListener('keyup', function () {
 });
 
 async function getAllCategories() {
+    $(".loading-screen").fadeIn(1000)
     rowDiv.innerHTML = '';
     let apiRes = await new Category().getCategoryApi();
     displayCategories(apiRes)
+    $(".loading-screen").fadeOut(1000)
 }
 
 $('.categories').click(function() {
+    document.querySelector('.searchContainer').classList.replace('d-block', 'd-none')
+    $(".loading-screen").fadeIn(1000)
     getAllCategories();
+    $(".loading-screen").fadeOut(1000)
 })
 
 async function displayArea(area) {
@@ -256,15 +273,21 @@ async function countryImageApi(value) {
 }
 
 $('.area').click(async function() {
+    document.querySelector('.searchContainer').classList.replace('d-block', 'd-none')
+    $(".loading-screen").fadeIn(1000)
     rowDiv.innerHTML = '';
     let arr = await new Area().getAreaApi();
     displayArea(arr);
+    $(".loading-screen").fadeOut(1000)
 })
 
 $('.ingredients').click(async function() {
+    document.querySelector('.searchContainer').classList.replace('d-block', 'd-none')
+    $(".loading-screen").fadeIn(1000)
     rowDiv.innerHTML = '';
     let arr = await new IngredientsApi().getIngredientsApi();
     displayIngredients(arr)
+    $(".loading-screen").fadeOut(1000)
 })
 
 async function displayIngredients(arr) {
@@ -320,37 +343,39 @@ function validate(regex, element) {
 }
 
 $('.contactus').click(function() {
+    document.querySelector('.searchContainer').classList.replace('d-block', 'd-none')
+    
     let displayElement = '';
     displayElement = `
     
     <div class="col-md-6">
     <div class="box">
-        <input type="text" placeholder="Enter your first name" class="w-100 px-3 py-2 text-white form-control bg-transparent rounded-5">
+        <input type="text" placeholder="Enter your first name" class="w-100 px-3 text py-2 text-white form-control bg-transparent rounded-5">
     </div>
 </div>
 <div class="col-md-6">
     <div class="box">
-        <input type="email" placeholder="Enter your Email" class="w-100 px-3 py-2 text-white form-control bg-transparent rounded-5">
+        <input type="email" placeholder="Enter your Email" class="w-100 px-3 py-2 email text-white form-control bg-transparent rounded-5">
     </div>
 </div>
 <div class="col-md-6">
     <div class="box">
-        <input type="number" placeholder="Enter your phone" class="w-100 px-3 py-2 text-white form-control bg-transparent rounded-5">
+        <input type="number" placeholder="Enter your phone" class="w-100 px-3 py-2 number text-white form-control bg-transparent rounded-5">
     </div>
 </div>
 <div class="col-md-6">
     <div class="box">
-        <input type="number" placeholder="Enter your age" class="w-100 px-3 py-2 text-white form-control bg-transparent rounded-5">
+        <input type="number" placeholder="Enter your age" class="w-100 px-3 py-2 number2 text-white form-control bg-transparent rounded-5">
     </div>
 </div>
 <div class="col-md-6">
     <div class="box">
-        <input type="password" placeholder="Enter your Password" class="w-100 px-3 py-2 text-white form-control bg-transparent rounded-5">
+        <input type="password" placeholder="Enter your Password" class="w-100 px-3 py-2 password text-white form-control bg-transparent rounded-5">
     </div>
 </div>
 <div class="col-md-6">
     <div class="box">
-        <input type="password" placeholder="re Enter your Password" class="w-100 px-3 py-2 text-white form-control bg-transparent rounded-5">
+        <input type="password" placeholder="re Enter your Password" class="w-100 px-3 py-2 repassword text-white form-control bg-transparent rounded-5">
     </div>
 </div>
 <button class =" w-25 submitBtn btn btn-outline-danger px-4 py-2 rounded-3 mx-auto d-block mt-4" disabled="true">Submit</button>
@@ -358,36 +383,42 @@ $('.contactus').click(function() {
     `;
 
     rowDiv.innerHTML = displayElement;
+
+    firstInputInRow = document.querySelector('.rowDiv .text');
+    secondInputInRow = document.querySelector('.rowDiv .email');
+    thirdInputInRow = document.querySelector('.rowDiv .number');
+    fourthInputInRow = document.querySelector('.rowDiv .number2');
+    fifthInputInRow = document.querySelector('.rowDiv .password');
+    sixInputInRow = document.querySelector('.rowDiv .repassword');
+    submitBtn = document.querySelector('.submitBtn');
+
+    firstInputInRow.addEventListener('input', () => {
+        validate(userNameRegex, firstInputInRow)
+    })
+    
+    secondInputInRow.addEventListener('input', () => {
+        validate(emailRegex, secondInputInRow)
+    })
+    
+    thirdInputInRow.addEventListener('input', () => {
+        validate(phoneNumberRegex, thirdInputInRow)
+    })
+    
+    fourthInputInRow.addEventListener('input', () => {
+        validate(ageRegex, fourthInputInRow)
+    })
+    
+    fifthInputInRow.addEventListener('input', () => {
+        validate(passwordRegex, fifthInputInRow)
+    })
+    
+    sixInputInRow.addEventListener('input', () => {
+        validate(rePasswordRegex, sixInputInRow)
+    })
+    
+    if (validate(userNameRegex, firstInputInRow) && validate(emailRegex, secondInputInRow) && validate(phoneNumberRegex, thirdInputInRow) && validate(ageRegex, fourthInputInRow) && validate(passwordRegex, fifthInputInRow) && validate(rePasswordRegex, sixInputInRow)) {
+        submitBtn.removeAttribute('disabled');
+    } else {
+        submitBtn.setAttribute('disabled', true);
+    }
 })
-
-firstInputInRow.addEventListener('input', () => {
-    validate(userNameRegex, firstInputInRow)
-})
-
-secondInputInRow.addEventListener('input', () => {
-    validate(emailRegex, secondInputInRow)
-})
-
-thirdInputInRow.addEventListener('input', () => {
-    validate(phoneNumberRegex, thirdInputInRow)
-})
-
-fourthInputInRow.addEventListener('input', () => {
-    validate(ageRegex, fourthInputInRow)
-})
-
-fifthInputInRow.addEventListener('input', () => {
-    validate(passwordRegex, fifthInputInRow)
-})
-
-sixInputInRow.addEventListener('input', () => {
-    validate(rePasswordRegex, sixInputInRow)
-})
-
-if (validate(userNameRegex, firstInputInRow) && validate(emailRegex, secondInputInRow) && validate(phoneNumberRegex, thirdInputInRow) && validate(ageRegex, fourthInputInRow) && validate(passwordRegex, fifthInputInRow) && validate(rePasswordRegex, sixInputInRow)) {
-    submitBtn.removeAttribute('disabled');
-} else {
-    submitBtn.setAttribute('disabled', true);
-}
-
-    // function validation()

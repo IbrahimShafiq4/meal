@@ -7,6 +7,11 @@
 body {
     background-color: #222;
     font-family: 'Poppins', 'sans-serif';
+    overflow: hidden;
+}
+
+.loading-screen {
+    display: flex;
 }
 
 .sidebar {
@@ -64,67 +69,6 @@ input::placeholder {
 .box:hover span {
     top: 0;
 }
-
-/* .box {
-    cursor: pointer;
-    position: relative
-}
-
-.box span {
-    top: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-    transition: var(--main-transition);
-}
-
-.box:hover span {
-    top: 0;
-}
-
-.boxContent .area,
-.boxContent .category, 
-.boxContent .recipe,
-.boxContent .tags,
-.boxContent .more-info {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.description span,
-.area span,
-.category span {
-    background-image: linear-gradient(to right, #00539CFF 0%, #EEA47FFF 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    font-size: 18px;
-    padding: 5px 10px;
-    text-transform: uppercase;
-    text-align: center;
-    border-radius: 10px;
-}
-
-.ul-recipe p {
-    background-color: #F96167;
-}
-
-.ul-tags li p {
-    background-color: #317773;
-}
-
-.ul-info li:nth-child(1) a {
-    background-color: yellowgreen;
-    cursor: pointer;
-}
-
-.ul-info li:nth-child(2) a {
-    background-color: rgba(255, 0, 0, 0.8);
-    cursor: pointer;
-}
-
-.closeBtn {
-    cursor: pointer;
-} */
-
 
 .countryImg {
     width: 100px;
